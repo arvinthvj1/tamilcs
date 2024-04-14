@@ -23,14 +23,14 @@ const getData = async (id) => {
       ])
     return data[0];
 }
-const slugify = (text) => {
-return text.toString().toLowerCase()
-  .replace(/\s+/g, '-')           // Replace spaces with -
-  .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-  .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-  .replace(/^-+/, '')             // Trim - from start of text
-  .replace(/-+$/, '');            // Trim - from end of text
-};
+// const slugify = (text) => {
+// return text.toString().toLowerCase()
+//   .replace(/\s+/g, '-')           // Replace spaces with -
+//   .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+//   .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+//   .replace(/^-+/, '')             // Trim - from start of text
+//   .replace(/-+$/, '');            // Trim - from end of text
+// };
 export default async function Home({ params }) {
     const data = await getData(params.id);
     const firstRelatedData = data.related_data[0];
@@ -46,7 +46,7 @@ export default async function Home({ params }) {
                         <div className="ratio ratio-16x9 shadow bg-white rounded-lg overflow-hidden">
                             <iframe src={`https://www.youtube.com/embed/${firstRelatedData.video}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <div className="p-3 my-3 shadow bg-white rounded-md">{data.content}</div>
+                        <div className="p-3 my-3 shadow bg-white rounded-md"><div dangerouslySetInnerHTML={{ __html: data.content }} /></div>
                     </div>
                     <div class="w-full md:w-1/3 lg:w-4/12 p-4">
                         <h2 className="text-2xl font-bold mb-3">Related Videos</h2>

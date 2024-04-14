@@ -17,7 +17,7 @@ export default function ThumbCard(props) {
         <Image
             src={`https://i.ytimg.com/vi/${firstRelatedData.video}/hqdefault.jpg`}
             alt={props.video.title}
-            className="dark:invert"
+            className=""
             width={480}
             height={200}
             priority
