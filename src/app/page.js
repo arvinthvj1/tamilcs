@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import ThumbCard from "../app/components/ThumbCard";
 
 export default function Home() {
@@ -25,17 +24,17 @@ export default function Home() {
                 <div className="container px-4 mx-auto">
                     <h1 className="text-3xl font-bold text-center mb-5">தமிழ் கிறிஸ்தவ பாடல்கள்</h1>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-5">
+                        {/* <ThumbCard />
                         <ThumbCard />
                         <ThumbCard />
-                        <ThumbCard />
-                        <ThumbCard />
+                        <ThumbCard /> */}
                     </div>
                     <h2 className="text-3xl font-bold text-center mb-5">മലയാളം ക്രിസ്ത്യൻ ഗാനങ്ങൾ</h2>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {/* <ThumbCard />
                         <ThumbCard />
                         <ThumbCard />
-                        <ThumbCard />
-                        <ThumbCard />
+                        <ThumbCard /> */}
                     </div>
                 </div>
                 <h2 className="text-3xl font-bold text-center mb-5">Festival Songs</h2>

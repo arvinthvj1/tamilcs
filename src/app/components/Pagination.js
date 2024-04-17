@@ -1,4 +1,5 @@
-export default function Pagination({ currentPage, totalPages ,onPageChange}) {
+import Link from "next/link";
+export default function Pagination({ currentPage, totalPages ,slug}) {
     const displayPageNumbers = 10; // Number of page numbers to display
     const pageNumbers = [];
   
@@ -18,17 +19,16 @@ export default function Pagination({ currentPage, totalPages ,onPageChange}) {
     for (let i = startPage; i <= endPage; i++) {
       pageNumbers.push(
         <li key={i}>
-          <a
-            href="#"
+          <Link
+            href={`/${slug}/${i}`}
             className={`flex items-center justify-center px-4 h-10 leading-tight ${
-              i === currentPage
+              i == currentPage
                 ? 'text-blue-600 bg-blue-50 border border-gray-300'
                 : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'
             }`}
-            onClick={() => onPageChange(i)}
           >
             {i}
-          </a>
+          </Link>
         </li>
       );
     }
@@ -36,27 +36,27 @@ export default function Pagination({ currentPage, totalPages ,onPageChange}) {
     return (
       <nav aria-label="Page navigation" className="flex items-center justify-between">
         <ul className="inline-flex -space-x-px text-base h-10">
-          <li>
-            <a
-              href="#"
+         {Number(currentPage) <= 1 ? "" :<li>
+            <Link
+              href={`/${slug}/${Number(currentPage)-1}`}
               className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              onClick={() => onPageChange(currentPage - 1)}
+              
               disabled={currentPage === 1}
             >
               Previous
-            </a>
-          </li>
+            </Link>
+          </li>} 
           {pageNumbers}
-          <li>
-            <a
-              href="#"
+          {Number(currentPage) >= totalPages ? "" :<li>
+            <Link
+             href={ `/${slug}/${Number(currentPage)+1}`}
               className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              onClick={() => onPageChange(currentPage + 1)}
+           
               disabled={currentPage === totalPages}
             >
               Next
-            </a>
-          </li>
+            </Link>
+          </li>}
         </ul>
       </nav>
     );
